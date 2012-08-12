@@ -67,7 +67,6 @@ public class JOPHWarn extends JavaPlugin {
 	}
 
 	private void SetupConfig() {
-
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
 	}
