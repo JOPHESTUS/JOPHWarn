@@ -21,8 +21,6 @@ public class JOPHWarnListener
 
   public void onPlayerJoin(PlayerJoinEvent e) {
 	Player p = e.getPlayer();
-	p.sendMessage("Hi");
-	plugin.log.info("hi");
 	List<String> warnings = plugin.getCustomConfig().getStringList(
 			p.getName() + "offline");
 	int size = warnings.size();
