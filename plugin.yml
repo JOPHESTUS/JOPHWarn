@@ -1,6 +1,6 @@
 name: JOPHWarn
 main: me.jophestus.JOPHWarn.JOPHWarn
-version: 1.6.2
+version: 1.6.3
 author: JOPHESTUS
 description: Warns players for misconduct
 commands:
