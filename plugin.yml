@@ -1,0 +1,9 @@
+name: JOPHWarn
+main: me.jophestus.JOPHWarn.JOPHWarn
+version: 1.6.1
+author: JOPHESTUS
+description: Warns players for misconduct
+commands:
+    warn:
+    warnings:
+        

@@ -1,0 +1,56 @@
+#Enable kick feature?
+enablekick: true
+#The maximum amount of warnings a players gets before they are kicked
+kickafter: 3
+#kick message
+kickmessage: 'Slow down, you are gonna get banz0rd'
+
+#enable ban feature?
+enableban: true
+#ban after how many warnings?
+banafter: 10
+#Ban message
+banmessage: 'You have reached the maximum allowed warnings'
+
+#enable customcommand1?
+enablecustom1: false
+#execute custom command after:
+custom1warns: 5
+#custom command1 (use %p for player)
+custom1command: 'tempban %p 1d'
+
+#enable custom command2?
+enablecustom2: false
+#execute custom 2 after
+custom2warns: 2
+#custom2 command (use %p for player)
+custom2command: 'jail %p jailname'
+
+#enable custom command3?
+enablecustom3: false
+#execute custom custom 3 after?
+custom3warns: 1337
+#custom3 command (use %p for player)
+custom3command: 'deop %p'
+
+#enable custom command4?
+enablecustom4: false
+#execute custom 4 after
+custom4warns: 1337
+#custom4 command (use %p for player)
+custom4command: 'jail %p jailname2'
+
+#enable custom command5?
+enablecustom5: false
+#execute custom 5 after
+custom5warns: 1337
+#custom5 command (use %p for player)
+custom5command: 'jail %p jailname3'
+
+#enable custom command6?
+enablecustom6: false
+#execute custom 6 after
+custom6warns: 1337
+#custom6 command (use %p for player)
+custom6command: 'jail %p jailname4'
+
