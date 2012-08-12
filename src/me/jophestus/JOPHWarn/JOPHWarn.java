@@ -270,21 +270,22 @@ public class JOPHWarn extends JavaPlugin {
 				}
 			}
 		}
-		if (command.getName().equalsIgnoreCase("infract")) {
-
-			if (sender.hasPermission("JOPHWarn.infract")) {
-
-				if (args.length == 0 || args.length == 1) {
-					sender.sendMessage(ChatColor.RED
-							+ "[JOPHWarn] "
-							+ ChatColor.GREEN
-							+ "I'm sorry "
-							+ sender.getName()
-							+ ", You haven't provided enough args for this command.");
-
-				}
-			}
-		}
+		// The infract command is not used yet 
+//		if (command.getName().equalsIgnoreCase("infract")) {
+//
+//			if (sender.hasPermission("JOPHWarn.infract")) {
+//
+//				if (args.length == 0 || args.length == 1) {
+//					sender.sendMessage(ChatColor.RED
+//							+ "[JOPHWarn] "
+//							+ ChatColor.GREEN
+//							+ "I'm sorry "
+//							+ sender.getName()
+//							+ ", You haven't provided enough args for this command.");
+//
+//				}
+//			}
+//		}
 		return super.onCommand(sender, command, label, args);
 	}
 
