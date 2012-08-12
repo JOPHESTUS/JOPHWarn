@@ -85,8 +85,7 @@ public class JOPHWarn extends JavaPlugin {
 			String label, String[] args) {
 
 		if (command.getName().equalsIgnoreCase("warn")) {
-			OfflinePlayer offline = Bukkit.getServer()
-					.getOfflinePlayer(args[0]);
+			
 			
 				
 				
@@ -130,7 +129,8 @@ public class JOPHWarn extends JavaPlugin {
 			List<String> warnings = getCustomConfig().getStringList(
 					args[0]);
 	if (warnee == null) {
-				
+		OfflinePlayer offline = Bukkit.getServer()
+				.getOfflinePlayer(args[0]);
 				
 				warnings.add(b.toString() + " - By: " + sender.getName());
 				getCustomConfig().set(offline.getName() + "offline", warnings);
@@ -239,6 +239,11 @@ public class JOPHWarn extends JavaPlugin {
 		}
 
 		if (command.getName().equalsIgnoreCase("warnings")) {
+			if (args.length < 2){
+				sender.sendMessage(ChatColor.RED + "[JOPHWarn] "
+						+ ChatColor.GREEN + "You have not provided enough args :(");
+				return false;
+			}
 			if (sender.hasPermission("JOPHWarn.view")) {
 
 				if (args[0].equalsIgnoreCase("view")) {
@@ -256,7 +261,7 @@ public class JOPHWarn extends JavaPlugin {
 					}
 					sender.sendMessage(ChatColor.BLACK
 							+ "+++++++++++++++++++++++++++++++++++++++");
-
+					return true;
 				}
 			}
 			if (sender.hasPermission("JOPHWarn.warnings.clearall")) {
@@ -267,6 +272,8 @@ public class JOPHWarn extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "[JOPHWarn]"
 							+ ChatColor.GREEN + " You have cleared " + args[1]
 							+ "'s warnings");
+					return true;
+
 				}
 			}
 		}
