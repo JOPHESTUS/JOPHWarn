@@ -1,3 +1,6 @@
+#Notify all people with JOPHWarn.notify when a player is warned
+notifyadmins: true
+
 #Enable kick feature?
 enablekick: true
 #The maximum amount of warnings a players gets before they are kicked
