@@ -19,11 +19,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.ConsoleCommandSender;
 
 public class JOPHWarn extends JavaPlugin {
-	 public static JOPHWarn plugin;
+	public static JOPHWarn plugin;
 	Logger log = Logger.getLogger("Minecraft");
 	private FileConfiguration customConfig = null;
 	private File customConfigFile = null;
 	public final JOPHWarnListener Listener = new JOPHWarnListener(this);
+
 	public void reloadCustomConfig() {
 		if (customConfigFile == null) {
 			customConfigFile = new File(getDataFolder(), "warnings.yml");
@@ -62,7 +63,7 @@ public class JOPHWarn extends JavaPlugin {
 		SetupConfig();
 		loadConfiguration();
 		PluginManager pm = getServer().getPluginManager();
-	    pm.registerEvents(this.Listener, this);
+		pm.registerEvents(this.Listener, this);
 
 	}
 
@@ -84,79 +85,82 @@ public class JOPHWarn extends JavaPlugin {
 			String label, String[] args) {
 
 		if (command.getName().equalsIgnoreCase("warn")) {
-			
-			
-				
-				
-			
-			ConsoleCommandSender console = Bukkit.getServer()
-					.getConsoleSender();
-			int maxwarnings = this.getConfig().getInt("kickafter");
-			int maxwarningsBan = getConfig().getInt("banafter");
-			int custom1 = getConfig().getInt("custom1warns");
-			int custom2 = getConfig().getInt("custom2warns");
-			int custom3 = getConfig().getInt("custom3warns");
-			int custom4 = getConfig().getInt("custom4warns");
-			int custom5 = getConfig().getInt("custom5warns");
-			int custom6 = getConfig().getInt("custom6warns");
 
-			String custom1command = getConfig().getString("custom1command");
-			String custom2command = getConfig().getString("custom2command");
-			String custom3command = getConfig().getString("custom3command");
-			String custom4command = getConfig().getString("custom4command");
-			String custom5command = getConfig().getString("custom5command");
-			String custom6command = getConfig().getString("custom6command");
-			
-			if (args.length == 0 || args.length == 1) {
-				sender.sendMessage(ChatColor.RED
-						+ "[JOPHWarn] "
-						+ ChatColor.GREEN
-						+ "I'm sorry "
-						+ sender.getName()
-						+ ", You haven't provided enough args for this command.");
-
-				return false;
-			}
-			
-			StringBuilder b = new StringBuilder();
-			for (int i = 1; i < args.length; i++) {
-				if (i != 1)
-					b.append(" ");
-				b.append(args[i]);
-			}
-			Player warnee = Bukkit.getServer().getPlayer(args[0]);
-			
-			List<String> warnings = getCustomConfig().getStringList(
-					args[0]);
-	if (warnee == null) {
-		OfflinePlayer offline = Bukkit.getServer()
-				.getOfflinePlayer(args[0]);
-				
-				warnings.add(b.toString() + " - By: " + sender.getName());
-				getCustomConfig().set(offline.getName() + "offline", warnings);
-				saveCustomConfig();
-				reloadCustomConfig();
-				sender.sendMessage(ChatColor.RED + "[JOPHWarn] " + ChatColor.GREEN + args[0] + " is not online. They will receive the warning when they logon");
-				warnings.clear();
-				return false;
-			}
-			
-		
-						
-			custom1command = custom1command.replace("%p", warnee.getName());
-			custom2command = custom2command.replace("%p", warnee.getName());
-			custom3command = custom3command.replace("%p", warnee.getName());
-			custom4command = custom4command.replace("%p", warnee.getName());
-			custom5command = custom5command.replace("%p", warnee.getName());
-			custom6command = custom6command.replace("%p", warnee.getName());
-			if (getConfig().getBoolean("notifyadmins", true)){
-			for (Player plr : Bukkit.getServer().getOnlinePlayers())
-				if ((plr.hasPermission("JOPHWarn.notify")) || (plr.isOp())){
-			        plr.sendMessage(warnee.getName() + ChatColor.GREEN + " Was warned by " + sender.getName() + ". For:");
-			        plr.sendMessage(ChatColor.GOLD + b.toString());
-				}   
-				}
 			if (sender.hasPermission("JOPHWarn.warn")) {
+
+				ConsoleCommandSender console = Bukkit.getServer()
+						.getConsoleSender();
+				int maxwarnings = this.getConfig().getInt("kickafter");
+				int maxwarningsBan = getConfig().getInt("banafter");
+				int custom1 = getConfig().getInt("custom1warns");
+				int custom2 = getConfig().getInt("custom2warns");
+				int custom3 = getConfig().getInt("custom3warns");
+				int custom4 = getConfig().getInt("custom4warns");
+				int custom5 = getConfig().getInt("custom5warns");
+				int custom6 = getConfig().getInt("custom6warns");
+
+				String custom1command = getConfig().getString("custom1command");
+				String custom2command = getConfig().getString("custom2command");
+				String custom3command = getConfig().getString("custom3command");
+				String custom4command = getConfig().getString("custom4command");
+				String custom5command = getConfig().getString("custom5command");
+				String custom6command = getConfig().getString("custom6command");
+
+				if (args.length == 0 || args.length == 1) {
+					sender.sendMessage(ChatColor.RED
+							+ "[JOPHWarn] "
+							+ ChatColor.GREEN
+							+ "I'm sorry "
+							+ sender.getName()
+							+ ", You haven't provided enough args for this command.");
+
+					return false;
+				}
+
+				StringBuilder b = new StringBuilder();
+				for (int i = 1; i < args.length; i++) {
+					if (i != 1)
+						b.append(" ");
+					b.append(args[i]);
+				}
+				Player warnee = Bukkit.getServer().getPlayer(args[0]);
+
+				List<String> warnings = getCustomConfig()
+						.getStringList(args[0]);
+				if (warnee == null) {
+					OfflinePlayer offline = Bukkit.getServer()
+							.getOfflinePlayer(args[0]);
+
+					warnings.add(b.toString() + " - By: " + sender.getName());
+					getCustomConfig().set(offline.getName() + "offline",
+							warnings);
+					saveCustomConfig();
+					reloadCustomConfig();
+					sender.sendMessage(ChatColor.RED
+							+ "[JOPHWarn] "
+							+ ChatColor.GREEN
+							+ args[0]
+							+ " is not online. They will receive the warning when they logon");
+					warnings.clear();
+					return false;
+				}
+
+				custom1command = custom1command.replace("%p", warnee.getName());
+				custom2command = custom2command.replace("%p", warnee.getName());
+				custom3command = custom3command.replace("%p", warnee.getName());
+				custom4command = custom4command.replace("%p", warnee.getName());
+				custom5command = custom5command.replace("%p", warnee.getName());
+				custom6command = custom6command.replace("%p", warnee.getName());
+				if (getConfig().getBoolean("notifyadmins", true)) {
+					for (Player plr : Bukkit.getServer().getOnlinePlayers())
+						if ((plr.hasPermission("JOPHWarn.notify"))
+								|| (plr.isOp())) {
+							plr.sendMessage(warnee.getName() + ChatColor.GREEN
+									+ " Was warned by " + sender.getName()
+									+ ". For:");
+							plr.sendMessage(ChatColor.GOLD + b.toString());
+						}
+				}
 
 				sender.sendMessage(ChatColor.RED + "[JOPHWarn] "
 						+ ChatColor.GREEN + "Warning sent to "
@@ -169,7 +173,7 @@ public class JOPHWarn extends JavaPlugin {
 				warnee.sendMessage(ChatColor.GREEN + b.toString());
 				warnee.sendMessage(ChatColor.BLACK
 						+ "+++++++++++++++++++++++++++++++++++++++");
-			
+
 				warnings.add(b.toString() + " - By: " + sender.getName());
 				getCustomConfig().set(warnee.getName(), warnings);
 				saveCustomConfig();
@@ -245,9 +249,10 @@ public class JOPHWarn extends JavaPlugin {
 		}
 
 		if (command.getName().equalsIgnoreCase("warnings")) {
-			if (args.length < 2){
+			if (args.length < 2) {
 				sender.sendMessage(ChatColor.RED + "[JOPHWarn] "
-						+ ChatColor.GREEN + "You have not provided enough args :(");
+						+ ChatColor.GREEN
+						+ "You have not provided enough args :(");
 				return false;
 			}
 			if (sender.hasPermission("JOPHWarn.view")) {
@@ -286,12 +291,11 @@ public class JOPHWarn extends JavaPlugin {
 
 		if (command.getName().equalsIgnoreCase("jophwarn")) {
 
-			
-					sender.sendMessage(ChatColor.RED + "[JOPHWarn]" + ChatColor.GREEN + " JOPHWarn, by JOPHESTUS. Version 1.6.3");
-							
-				}
-			
-		
+			sender.sendMessage(ChatColor.RED + "[JOPHWarn]" + ChatColor.GREEN
+					+ " JOPHWarn, by JOPHESTUS. Version 1.6.3");
+
+		}
+
 		return super.onCommand(sender, command, label, args);
 	}
 
