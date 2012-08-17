@@ -292,7 +292,7 @@ public class JOPHWarn extends JavaPlugin {
 		if (command.getName().equalsIgnoreCase("jophwarn")) {
 
 			sender.sendMessage(ChatColor.RED + "[JOPHWarn]" + ChatColor.GREEN
-					+ " JOPHWarn, by JOPHESTUS. Version 1.6.3");
+					+ " JOPHWarn, by JOPHESTUS. Version 1.6.4");
 
 		}
 
