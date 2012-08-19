@@ -3,6 +3,8 @@ package me.jophestus.JOPHWarn;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,6 +108,19 @@ public class JOPHWarn extends JavaPlugin {
 				String custom5command = getConfig().getString("custom5command");
 				String custom6command = getConfig().getString("custom6command");
 
+
+				
+				Calendar currentDate = Calendar.getInstance();
+				  SimpleDateFormat formatter= 
+				  new SimpleDateFormat("dd/MMM HH:mm:ss");
+				  String dateNow = formatter.format(currentDate.getTime());
+				
+				
+				
+				
+				
+				
+				
 				if (args.length == 0 || args.length == 1) {
 					sender.sendMessage(ChatColor.RED
 							+ "[JOPHWarn] "
@@ -131,7 +146,7 @@ public class JOPHWarn extends JavaPlugin {
 					OfflinePlayer offline = Bukkit.getServer()
 							.getOfflinePlayer(args[0]);
 
-					warnings.add(b.toString() + " - By: " + sender.getName());
+					warnings.add(b.toString() + " - By: " + sender.getName() + " " + dateNow);
 					getCustomConfig().set(offline.getName() + "offline",
 							warnings);
 					saveCustomConfig();
@@ -174,7 +189,7 @@ public class JOPHWarn extends JavaPlugin {
 				warnee.sendMessage(ChatColor.BLACK
 						+ "+++++++++++++++++++++++++++++++++++++++");
 
-				warnings.add(b.toString() + " - By: " + sender.getName());
+				warnings.add(b.toString() + " - By: " + sender.getName() + " " + dateNow);
 				getCustomConfig().set(warnee.getName(), warnings);
 				saveCustomConfig();
 				reloadCustomConfig();
