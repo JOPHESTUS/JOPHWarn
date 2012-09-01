@@ -80,10 +80,7 @@ public class JOPHWarn extends JavaPlugin {
 		saveCustomConfig();
 	}
 
-	public void onDisable() {
-	}
-
-	public boolean onCommand(CommandSender sender, Command command,
+		public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
 
 		if (command.getName().equalsIgnoreCase("warn")) {
@@ -101,33 +98,31 @@ public class JOPHWarn extends JavaPlugin {
 				int custom5 = getConfig().getInt("custom5warns");
 				int custom6 = getConfig().getInt("custom6warns");
 
-				String custom1command = getConfig().getString("custom1command");
-				String custom2command = getConfig().getString("custom2command");
-				String custom3command = getConfig().getString("custom3command");
-				String custom4command = getConfig().getString("custom4command");
-				String custom5command = getConfig().getString("custom5command");
-				String custom6command = getConfig().getString("custom6command");
+				String custom1command = getConfig().getString(
+						"custom1command");
+				String custom2command = getConfig().getString(
+						"custom2command");
+				String custom3command = getConfig().getString(
+						"custom3command");
+				String custom4command = getConfig().getString(
+						"custom4command");
+				String custom5command = getConfig().getString(
+						"custom5command");
+				String custom6command = getConfig().getString(
+						"custom6command");
 
-
-				
 				Calendar currentDate = Calendar.getInstance();
-				  SimpleDateFormat formatter= 
-				  new SimpleDateFormat("dd/MMM HH:mm:ss");
-				  String dateNow = formatter.format(currentDate.getTime());
-				
-				
-				
-				
-				
-				
-				
+				SimpleDateFormat formatter = new SimpleDateFormat(
+						"dd/MMM HH:mm:ss");
+				String dateNow = formatter.format(currentDate.getTime());
+
 				if (args.length == 0 || args.length == 1) {
 					sender.sendMessage(ChatColor.RED
 							+ "[JOPHWarn] "
 							+ ChatColor.GREEN
 							+ "I'm sorry "
 							+ sender.getName()
-							+ ", You haven't provided enough args for this command.");
+							+ ", You haven't provided enough arguments for this command.");
 
 					return false;
 				}
@@ -146,7 +141,8 @@ public class JOPHWarn extends JavaPlugin {
 					OfflinePlayer offline = Bukkit.getServer()
 							.getOfflinePlayer(args[0]);
 
-					warnings.add(b.toString() + " - By: " + sender.getName() + " " + dateNow);
+					warnings.add(b.toString() + " - By: " + sender.getName()
+							+ " " + dateNow);
 					getCustomConfig().set(offline.getName() + "offline",
 							warnings);
 					saveCustomConfig();
@@ -166,13 +162,20 @@ public class JOPHWarn extends JavaPlugin {
 				custom4command = custom4command.replace("%p", warnee.getName());
 				custom5command = custom5command.replace("%p", warnee.getName());
 				custom6command = custom6command.replace("%p", warnee.getName());
+
+				custom1command = custom1command.replace("%w", b.toString());
+				custom2command = custom2command.replace("%w", b.toString());
+				custom3command = custom3command.replace("%w", b.toString());
+				custom4command = custom4command.replace("%w", b.toString());
+				custom5command = custom5command.replace("%w", b.toString());
+				custom6command = custom6command.replace("%w", b.toString());
 				if (getConfig().getBoolean("notifyadmins", true)) {
 					for (Player plr : Bukkit.getServer().getOnlinePlayers())
 						if ((plr.hasPermission("JOPHWarn.notify"))
 								|| (plr.isOp())) {
 							plr.sendMessage(warnee.getName() + ChatColor.GREEN
 									+ " Was warned by " + sender.getName()
-									+ ". For:");
+									+ " for:");
 							plr.sendMessage(ChatColor.GOLD + b.toString());
 						}
 				}
@@ -182,26 +185,27 @@ public class JOPHWarn extends JavaPlugin {
 						+ warnee.getName());
 				warnee.sendMessage(ChatColor.BLACK
 						+ "+++++++++++++++++++++++++++++++++++++++");
-				warnee.sendMessage(ChatColor.RED + "You have been warned by: "
+				warnee.sendMessage(ChatColor.RED + "You have been warned by "
 						+ ChatColor.BLUE + sender.getName() + ChatColor.RED
 						+ " for:");
 				warnee.sendMessage(ChatColor.GREEN + b.toString());
 				warnee.sendMessage(ChatColor.BLACK
 						+ "+++++++++++++++++++++++++++++++++++++++");
 
-				warnings.add(b.toString() + " - By: " + sender.getName() + " " + dateNow);
+				warnings.add(b.toString() + " - By: " + sender.getName() + " "
+						+ dateNow);
 				getCustomConfig().set(warnee.getName(), warnings);
 				saveCustomConfig();
 				reloadCustomConfig();
 				int warningCount = warnings.size();
-				if (getConfig().getBoolean("enablekick", true)) {
+				if (getConfig().getBoolean("enablekick", false)) {
 					if (warningCount == maxwarnings) {
 						warnee.kickPlayer(getConfig().getString("kickmessage"));
 						this.log.info(warnee.getName()
 								+ " reached the max warnings amount and was kicked");
 					}
 				}
-				if (getConfig().getBoolean("enableban", true)) {
+				if (getConfig().getBoolean("enableban", false)) {
 					if (warningCount == maxwarningsBan) {
 						Bukkit.getOfflinePlayer(args[0]).setBanned(true);
 						if (getServer().getPlayer(args[0]) != null) {
@@ -214,37 +218,37 @@ public class JOPHWarn extends JavaPlugin {
 
 					}
 				}
-				if (getConfig().getBoolean("enablecustom1", true)) {
+				if (getConfig().getBoolean("enablecustom1", false)) {
 					if (warningCount == custom1) {
 
 						Bukkit.dispatchCommand(console, custom1command);
 					}
 				}
-				if (getConfig().getBoolean("enablecustom2", true)) {
+				if (getConfig().getBoolean("enablecustom2", false)) {
 					if (warningCount == custom2) {
 
 						Bukkit.dispatchCommand(console, custom2command);
 					}
 				}
-				if (getConfig().getBoolean("enablecustom3", true)) {
+				if (getConfig().getBoolean("enablecustom3", false)) {
 					if (warningCount == custom3) {
 
 						Bukkit.dispatchCommand(console, custom3command);
 					}
 				}
-				if (getConfig().getBoolean("enablecustom4", true)) {
+				if (getConfig().getBoolean("enablecustom4", false)) {
 					if (warningCount == custom4) {
 
 						Bukkit.dispatchCommand(console, custom4command);
 					}
 				}
-				if (getConfig().getBoolean("enablecustom5", true)) {
+				if (getConfig().getBoolean("enablecustom5", false)) {
 					if (warningCount == custom5) {
 
 						Bukkit.dispatchCommand(console, custom5command);
 					}
 				}
-				if (getConfig().getBoolean("enablecustom6", true)) {
+				if (getConfig().getBoolean("enablecustom6", false)) {
 					if (warningCount == custom6) {
 
 						Bukkit.dispatchCommand(console, custom6command);
@@ -258,7 +262,7 @@ public class JOPHWarn extends JavaPlugin {
 			} else {
 				sender.sendMessage(ChatColor.RED + "[JOPHWarn] "
 						+ ChatColor.GREEN + "I'm sorry " + sender.getName()
-						+ ", You can't do that.");
+						+ ", but you can't do that.");
 			}
 
 		}
@@ -267,7 +271,7 @@ public class JOPHWarn extends JavaPlugin {
 			if (args.length < 2) {
 				sender.sendMessage(ChatColor.RED + "[JOPHWarn] "
 						+ ChatColor.GREEN
-						+ "You have not provided enough args :(");
+						+ "You have not provided enough arguments :(");
 				return false;
 			}
 			if (sender.hasPermission("JOPHWarn.view")) {
@@ -307,7 +311,7 @@ public class JOPHWarn extends JavaPlugin {
 		if (command.getName().equalsIgnoreCase("jophwarn")) {
 
 			sender.sendMessage(ChatColor.RED + "[JOPHWarn]" + ChatColor.GREEN
-					+ " JOPHWarn, by JOPHESTUS. Version 1.6.5");
+					+ " JOPHWarn, by JOPHESTUS. Version 1.6.6");
 
 		}
 

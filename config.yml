@@ -1,3 +1,7 @@
+################################################
+#             JOPHWarn Config                  #
+################################################
+
 #Notify all people with JOPHWarn.notify when a player is warned
 notifyadmins: true
 
@@ -14,6 +18,13 @@ enableban: true
 banafter: 10
 #Ban message
 banmessage: 'You have reached the maximum allowed warnings'
+
+################################################
+#             JOPHWarn Custom Commands         #
+################################################
+
+#!!!!! %p will be replaced with the players name !!!!!#
+#!!!!! %w will be replaced with the warn reason  !!!!!#
 
 #enable customcommand1?
 enablecustom1: false
@@ -56,4 +67,3 @@ enablecustom6: false
 custom6warns: 1337
 #custom6 command (use %p for player)
 custom6command: 'jail %p jailname4'
-
