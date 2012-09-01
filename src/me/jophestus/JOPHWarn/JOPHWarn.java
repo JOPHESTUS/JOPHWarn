@@ -180,9 +180,7 @@ public class JOPHWarn extends JavaPlugin {
 						}
 				}
 
-				sender.sendMessage(ChatColor.RED + "[JOPHWarn] "
-						+ ChatColor.GREEN + "Warning sent to "
-						+ warnee.getName());
+				sender.sendMessage(ChatColor.RED + "[JOPHWarn] " + ChatColor.GREEN + "Warning sent to " + warnee.getName());
 				warnee.sendMessage(ChatColor.BLACK
 						+ "+++++++++++++++++++++++++++++++++++++++");
 				warnee.sendMessage(ChatColor.RED + "You have been warned by "
