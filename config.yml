@@ -2,22 +2,22 @@
 #             JOPHWarn Config                  #
 ################################################
 
-#Notify all people with JOPHWarn.notify when a player is warned
+#Notify all people with JOPHWarn.notify when a player is warned/infracted
 notifyadmins: true
 
 #Enable kick feature?
 enablekick: true
-#The maximum amount of warnings a players gets before they are kicked
+#The maximum amount of infractions a players gets before they are kicked
 kickafter: 3
 #kick message
 kickmessage: 'Slow down, you are gonna get banz0rd'
 
 #enable ban feature?
 enableban: true
-#ban after how many warnings?
+#ban after how many infractions?
 banafter: 10
 #Ban message
-banmessage: 'You have reached the maximum allowed warnings'
+banmessage: 'You have reached the maximum allowed infractions'
 
 ################################################
 #             JOPHWarn Custom Commands         #
@@ -25,7 +25,7 @@ banmessage: 'You have reached the maximum allowed warnings'
 
 #!!!!! %p will be replaced with the players name !!!!!#
 #!!!!! %w will be replaced with the warn reason  !!!!!#
-
+# Custom commands are for infractions, not warnings
 #enable customcommand1?
 enablecustom1: false
 #execute custom command after:
